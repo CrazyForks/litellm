@@ -21,16 +21,14 @@ import TabItem from '@theme/TabItem';
 
 ## Deploy this version
 
-:::info
-
-This release is not live yet.
-
-:::
-
 <Tabs>
 <TabItem value="docker" label="Docker">
 
 ``` showLineNumbers title="docker run litellm"
+docker run \
+-e STORE_MODEL_IN_DB=True \
+-p 4000:4000 \
+ghcr.io/berriai/litellm:main-v1.77.3.rc.1
 ```
 
 </TabItem>
@@ -38,6 +36,7 @@ This release is not live yet.
 <TabItem value="pip" label="Pip">
 
 ``` showLineNumbers title="pip install litellm"
+pip install litellm==1.77.3
 ```
 
 </TabItem>
@@ -47,8 +46,16 @@ This release is not live yet.
 
 ## Key Highlights
 
-- **+550 RPS Performance Improvements** - Optimizations in request handling and object initialization
-- **Priority Based Rate Limiting** - Improved rate limiting for high-traffic scenarios
+- **+550 RPS Performance Improvements** - Optimizations in request handling and object initialization.
+- **Priority Quota Reservation** - Proxy admins can now reserve TPM/RPM capacity for specific keys.
+
+## Priority Quota Reservation
+
+This release adds support for priority quota reservation. This allows **Proxy Admins** to reserve TPM/RPM capacity for keys based on metadata priority levels, ensuring critical production workloads get guaranteed access regardless of development traffic volume.
+
+Get started [here](../../docs/proxy/dynamic_rate_limit#priority-quota-reservation)
+
+<iframe width="700" height="500" src="https://www.loom.com/embed/1b54b93139ee415d959402cc0629f3f7" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 
 ## New Models / Updated Models
